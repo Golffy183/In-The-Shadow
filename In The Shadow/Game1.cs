@@ -7,7 +7,6 @@ namespace In_The_Shadow
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        //rrt
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public GameplayScreen mGameplayScreen;
