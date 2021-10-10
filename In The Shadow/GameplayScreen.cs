@@ -33,6 +33,7 @@ namespace In_The_Shadow
         private static readonly TimeSpan TimeJump = TimeSpan.FromMilliseconds(200);
         private TimeSpan _TimeJump;
 
+        // Box Position
         Vector2 Box1Pos = new Vector2(200, 532);
 
         public GameplayScreen(Game1 game, EventHandler theScreenEvent)
@@ -190,7 +191,8 @@ namespace In_The_Shadow
             if (Keyboard.GetState().IsKeyDown(Keys.Up) && Jump == false)
             {
                 Jump = true;
-                velocity.Y = 6f;
+                // ปรับแรงกระโดด
+                velocity.Y = 8f;
 
                 _TimeJump = theTime.TotalGameTime;
             }
