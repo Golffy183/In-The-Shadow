@@ -514,7 +514,7 @@ namespace In_The_Shadow
                         x += 2;
                         PlayerPos.X += 2;
                     }
-                    if (x < 48)
+                    if (x < 96)
                     {
                         x += 2;
                         PlayerPos.X += 2;
