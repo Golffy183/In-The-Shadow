@@ -336,6 +336,11 @@ namespace In_The_Shadow
                         Box3Pos.X += 2;
                         PlayerPos.X += 2;
                     }
+                    if (Box3.Left < Platform5.Right + 2 && Box3.Intersects(Platform5))
+                    {
+                        Box3Pos.X += 2;
+                        PlayerPos.X += 2;
+                    }
                     if (Box3Pos.X < 48)
                     {
                         Box3Pos.X += 2;
