@@ -197,7 +197,7 @@ namespace In_The_Shadow
 
             // Trap 
             Rectangle Trap1 = new Rectangle((int)Trap1Pos.X - 2, (int)Trap1Pos.Y + 12, 32, 18);
-            Rectangle Trap2 = new Rectangle((int)Trap2Pos.X - 2, (int)Trap2Pos.Y + 12, 32, 18);
+            Rectangle Trap2 = new Rectangle((int)Trap2Pos.X - 2, (int)Trap2Pos.Y + 12, 24, 16);
 
             // Sec
             Rectangle Sec1 = new Rectangle((int)Sec1Pos.X + 12, (int)Sec1Pos.Y, 27, 48);
