@@ -635,6 +635,10 @@ namespace In_The_Shadow
                     Jump = false;
                     PlayerPos.Y = y - 48;
                 }
+                if (P_rectangle.Top < Box_rectangle.Bottom)
+                {
+                    velocity.Y = 0f;
+                }
             }
         }
 
