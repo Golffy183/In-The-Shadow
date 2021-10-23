@@ -286,7 +286,7 @@ namespace In_The_Shadow
                         Box2Pos.X += 2;
                         PlayerPos.X += 2;
                     }
-                    if (Box2.Left < Platform8.Right + 6)
+                    if (Box2.Left < Platform8.Right + 6 && Box2.Intersects(Platform7))
                     {
                         Box2Pos.X += 2;
                         PlayerPos.X += 2;
