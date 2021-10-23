@@ -33,7 +33,7 @@ namespace In_The_Shadow
             mGameplayScreen = new GameplayScreen(this, new EventHandler(GameplayScreenEvent));
             mGameplayScreen2 = new GameplayScreen2(this, new EventHandler(GameplayScreenEvent));
             mTitleScreen = new TitleScreen(this, new EventHandler(GameplayScreenEvent));
-            mCurrentScreen = mGameplayScreen2;
+            mCurrentScreen = mGameplayScreen;
         }
         protected override void UnloadContent()
         {
