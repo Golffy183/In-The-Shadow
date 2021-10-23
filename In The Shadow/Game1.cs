@@ -10,6 +10,7 @@ namespace In_The_Shadow
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public GameplayScreen mGameplayScreen;
+        public GameplayScreen2 mGameplayScreen2;
         public TitleScreen mTitleScreen;
         public screen mCurrentScreen;
         public Game1()
@@ -30,8 +31,9 @@ namespace In_The_Shadow
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             mGameplayScreen = new GameplayScreen(this, new EventHandler(GameplayScreenEvent));
+            mGameplayScreen2 = new GameplayScreen2(this, new EventHandler(GameplayScreenEvent));
             mTitleScreen = new TitleScreen(this, new EventHandler(GameplayScreenEvent));
-            mCurrentScreen = mGameplayScreen;
+            mCurrentScreen = mGameplayScreen2;
         }
         protected override void UnloadContent()
         {
