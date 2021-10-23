@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
+
 
 namespace In_The_Shadow
 {
@@ -9,6 +11,7 @@ namespace In_The_Shadow
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Song song;
         public GameplayScreen mGameplayScreen;
         public GameplayScreen2 mGameplayScreen2;
         public TitleScreen mTitleScreen;
@@ -33,7 +36,18 @@ namespace In_The_Shadow
             mGameplayScreen = new GameplayScreen(this, new EventHandler(GameplayScreenEvent));
             mGameplayScreen2 = new GameplayScreen2(this, new EventHandler(GameplayScreenEvent));
             mTitleScreen = new TitleScreen(this, new EventHandler(GameplayScreenEvent));
-            mCurrentScreen = mGameplayScreen;
+            mCurrentScreen = mTitleScreen;
+            this.song = Content.Load<Song>("backgroundmusic");
+            MediaPlayer.Play(song);
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
+        }
+
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        {
+            MediaPlayer.Volume -= 0.0f;
+            MediaPlayer.Play(song);
         }
         protected override void UnloadContent()
         {
@@ -48,7 +62,7 @@ namespace In_The_Shadow
         }
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
             mCurrentScreen.Draw(spriteBatch);
             spriteBatch.End();
