@@ -447,11 +447,6 @@ namespace In_The_Shadow
                         Box3Pos.X -= 2;
                         PlayerPos.X -= 2;
                     }
-                    if (Box3.Intersects(Platform7))
-                    {
-                        Box3Pos.X -= 2;
-                        PlayerPos.X -= 2;
-                    }
                     if (Box3Pos.X > 724)
                     {
                         Box3Pos.X -= 2;
