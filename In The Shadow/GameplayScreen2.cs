@@ -17,7 +17,8 @@ namespace In_The_Shadow
         Texture2D Background;
         Texture2D Box;
         Texture2D Button;
-        Texture2D Door;
+        Texture2D DoorRed;
+        Texture2D DoorGreen;
         Texture2D Key;
         Texture2D Gate;
         Texture2D Trap;
@@ -51,6 +52,7 @@ namespace In_The_Shadow
 
         // Door Position
         Vector2 Door1Pos = new Vector2(654, 46);
+        Vector2 Door2Pos = new Vector2(640, 309);
 
         // Button Position
         Vector2 Button1Pos = new Vector2(48, 540);
@@ -82,7 +84,8 @@ namespace In_The_Shadow
             Security.Load(game.Content, "Security", 5, 1, 10);
             Player.Load(game.Content, "shadow2", 8, 1, 15);
             Button = game.Content.Load<Texture2D>("tileset (botton)");
-            Door = game.Content.Load<Texture2D>("DoorGreenRed");
+            DoorRed = game.Content.Load<Texture2D>("DoorRed");
+            DoorGreen = game.Content.Load<Texture2D>("DoorGreenRed");
             Key = game.Content.Load<Texture2D>("key");
             Gate = game.Content.Load<Texture2D>("prison (1)");
             Trap = game.Content.Load<Texture2D>("Trap");
@@ -171,7 +174,7 @@ namespace In_The_Shadow
             Rectangle Platform22 = new Rectangle((int)654, (int)120, 96, 24);
             Rectangle Platform23 = new Rectangle((int)500, (int)168, 24, 24);
             Rectangle Platform24 = new Rectangle((int)628, (int)168, 24, 24);
-            Rectangle Platform25 = new Rectangle((int)650, (int)144, 96, 24);
+            Rectangle Platform25 = new Rectangle((int)654, (int)144, 96, 24);
 
             //Box
             Rectangle Box1 = new Rectangle((int)Box1Pos.X - 2, (int)Box1Pos.Y - 2, 28, 30);
@@ -184,6 +187,7 @@ namespace In_The_Shadow
 
             // Door
             Rectangle Door1 = new Rectangle((int)Door1Pos.X, (int)Door1Pos.Y, 16, 76);
+            Rectangle Door2 = new Rectangle((int)Door2Pos.X, (int)Door2Pos.Y, 16, 76);
 
             // Key
             Rectangle Key1 = new Rectangle((int)Key1Pos.X, (int)Key1Pos.Y, 24, 24);
@@ -236,7 +240,7 @@ namespace In_The_Shadow
             Platform(charRectangle, Platform22, 654, 120);
             Platform(charRectangle, Platform23, 500, 168);
             Platform(charRectangle, Platform24, 628, 168);
-            Platform(charRectangle, Platform25, 650, 144);
+            Platform(charRectangle, Platform25, 654, 144);
 
 
             //Box
@@ -464,27 +468,34 @@ namespace In_The_Shadow
             // Button1
             if (Button1.Intersects(Box3))
             {
-                ButtonChange = 1;
+                ButtonChange2 = 1;
             }
             if (Button1.Intersects(Box2))
             {
-                ButtonChange = 1;
+                ButtonChange2 = 1;
             }
             if (Button1.Intersects(Box1))
             {
-                ButtonChange = 1;
+                ButtonChange2 = 1;
             }
 
             // Button2
             if (Button2.Intersects(Box3))
             {
-                ButtonChange2 = 1;
+                ButtonChange = 1;
             }
 
             // Door
-            if (charRectangle.Intersects(Door1) && (ButtonChange == 0 || ButtonChange2 == 0))
+            if (charRectangle.Intersects(Door1) && ButtonChange == 0)
             {
                 if (charRectangle.Right > Door1.Left)
+                {
+                    PlayerPos.X -= 2;
+                }
+            }
+            if (charRectangle.Intersects(Door2) && ButtonChange2 == 0)
+            {
+                if (charRectangle.Right > Door2.Left)
                 {
                     PlayerPos.X -= 2;
                 }
@@ -568,11 +579,15 @@ namespace In_The_Shadow
             theBatch.Draw(Box, Box1Pos, new Rectangle(0, 0, 24, 24), Color.White);
             theBatch.Draw(Box, Box2Pos, new Rectangle(24, 0, 24, 24), Color.White);
             theBatch.Draw(Box, Box3Pos, new Rectangle(24 * 2, 0, 24, 24), Color.White);
-            theBatch.Draw(Button, Button1Pos, new Rectangle(24 * ButtonChange, 48, 24, 24), Color.White);
-            theBatch.Draw(Button, Button2Pos, new Rectangle(24 * ButtonChange2, 24, 24, 24), Color.White);
-            if (ButtonChange == 0 || ButtonChange2 == 0)
+            theBatch.Draw(Button, Button1Pos, new Rectangle(24 * ButtonChange2, 48, 24, 24), Color.White);
+            theBatch.Draw(Button, Button2Pos, new Rectangle(24 * ButtonChange, 24, 24, 24), Color.White);
+            if (ButtonChange == 0)
             {
-                theBatch.Draw(Door, Door1Pos, Color.White);
+                theBatch.Draw(DoorRed, Door1Pos, Color.White);
+            }
+            if (ButtonChange2 == 0)
+            {
+                theBatch.Draw(DoorGreen, Door2Pos, Color.White);
             }
             if (!GetKey)
             {
@@ -648,6 +663,7 @@ namespace In_The_Shadow
 
             // Door Position
             Door1Pos = new Vector2(654, 46);
+            Door2Pos = new Vector2(640, 309);
 
             // Button Position
             Button1Pos = new Vector2(48, 540);
