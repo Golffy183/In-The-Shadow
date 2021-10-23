@@ -465,6 +465,8 @@ namespace In_The_Shadow
                 }
             }
 
+            ButtonChange = 0;
+            ButtonChange2 = 0;
             // Button1
             if (Button1.Intersects(Box3))
             {
