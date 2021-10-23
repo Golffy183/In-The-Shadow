@@ -363,11 +363,6 @@ namespace In_The_Shadow
                         Box2Pos.X -= 2;
                         PlayerPos.X -= 2;
                     }
-                    if (Box2.Intersects(Platform7))
-                    {
-                        Box2Pos.X -= 2;
-                        PlayerPos.X -= 2;
-                    }
                     if (Box2.Intersects(Platform3) && Box2.Intersects(Platform5))
                     {
                         Box2Pos.X -= 2;
